@@ -1919,10 +1919,16 @@ Citizen.CreateThread(function()
 				TriggerEvent('esx_ambulancejob:revive')
 			elseif WarMenu.Button('~g~Mecano : Finish NPC Mission') then
 				TriggerServerEvent('esx_mecanojob:onNPCJobCompleted')
-			elseif WarMenu.Button('~g~Get all Driver lisence ~h~~r~[BETA]') then
+			elseif WarMenu.Button('~g~Get all Driver lisence') then
 				TriggerServerEvent('esx_dmvschool:addLicense', 'dmv')
 				TriggerServerEvent('esx_dmvschool:addLicense', 'drive')
 				TriggerServerEvent('esx_dmvschool:addLicense', 'drive_bike')
+				TriggerServerEvent('esx_dmvschool:addLicense', 'drive_truck')
+			elseif WarMenu.Button('~g~Get Driver lisence') then
+				TriggerServerEvent('esx_dmvschool:addLicense', 'drive')
+			elseif WarMenu.Button('~g~Get bike Driver lisence') then
+				TriggerServerEvent('esx_dmvschool:addLicense', 'drive_bike')
+			elseif WarMenu.Button('~g~Get truck Driver lisence') then
 				TriggerServerEvent('esx_dmvschool:addLicense', 'drive_truck')
 			elseif WarMenu.Button('~o~ESX jobs caution 10 000$') then
 				TriggerServerEvent('esx_jobs:caution', 'give_back', 10000)
