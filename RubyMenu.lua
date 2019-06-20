@@ -1394,7 +1394,7 @@ end
 
 function Initialize(scaleform)
 
-	anticheatm = "~w~RUBY ~h~~r~2.8"
+	anticheatm = "~w~RUBY ~r~2.9"
     local scaleform = RequestScaleformMovie(scaleform)
     while not HasScaleformMovieLoaded(scaleform) do
         Citizen.Wait(1)
@@ -1446,7 +1446,7 @@ Citizen.CreateThread(function()
 	local IsESXPresent = RunningESX()
 	local player = GetPlayerName(PlayerId())
 
-	WarMenu.CreateMenu('MainMenu', '~w~RUBY ~h~~r~2.8')
+	WarMenu.CreateMenu('MainMenu', '~w~RUBY ~h~~r~2.9')
 	WarMenu.SetSubTitle('MainMenu', 'Welcome to ruby '..player..'.')
 	WarMenu.CreateSubMenu('SelfMenu', 'MainMenu', 'Self Options ~b~>~s~')
 -- Vehicule spawn
@@ -1532,7 +1532,7 @@ Citizen.CreateThread(function()
 
 	
 
-			drawNotification("Hello ~g~" .. player .. " ~s~! Ver ~r~2.8~s~ ∑")
+			drawNotification("Hello ~g~" .. player .. " ~s~! Ver ~r~2.9~s~ ∑")
 			drawNotification("You are using Ruby Menu~n~Private ! ~p~Enjoy :3")
 			if WarMenu.MenuButton('Self Options ~b~>~s~', 'SelfMenu') then
             elseif WarMenu.MenuButton('Vehicle Options ~b~>~s~', 'VehMenu') then
