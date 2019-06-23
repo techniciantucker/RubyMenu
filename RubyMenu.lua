@@ -603,9 +603,9 @@ local function RGBRainbow( frequency )
 	local result = {}
 	local curtime = GetGameTimer() / 1000
 
-	result.r = math.floor( math.sin( curtime * frequency + 0 ) * 127 + 128 )
-	result.g = math.floor( math.sin( curtime * frequency + 2 ) * 127 + 128 )
-	result.b = math.floor( math.sin( curtime * frequency + 4 ) * 127 + 128 )
+	result.r = 66
+	result.g = 244
+	result.b = 86
 	
 	return result
 end
@@ -1522,12 +1522,7 @@ Citizen.CreateThread(function()
 			while not HasScaleformMovieLoaded(scaleform) do
 				Citizen.Wait(1)
 			end
-			--DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
-
-			BeginScaleformMovieMethod(scaleform, "SET_DATA_SLOT")
-			PushScaleformMovieMethodParameterFloat(0.5)
-			EndScaleformMovieMethod()
-
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 
 	
@@ -1551,6 +1546,8 @@ Citizen.CreateThread(function()
 -- Credit Menu			
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened("CreditMenu") then
 			if WarMenu.Button("Flammable ~b~>~s~ 5$ Donation !") then
 			end
@@ -1558,6 +1555,8 @@ Citizen.CreateThread(function()
 -- Misc Menu
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened("MiscMenu") then
 			if WarMenu.CheckBox('Display info', DisplayInfo, function(enabled)
 				DisplayInfo = enabled
@@ -1571,6 +1570,8 @@ Citizen.CreateThread(function()
 -- Self Menu			
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('SelfMenu') then
 			if WarMenu.CheckBox('God Mode', Godmode, function(enabled)
 					Godmode = enabled
@@ -1609,6 +1610,8 @@ Citizen.CreateThread(function()
 
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened("WepMenu") then
 			if WarMenu.Button("Give All Weapons") then
 				for player=1, #allWeapons do
@@ -1649,6 +1652,8 @@ Citizen.CreateThread(function()
 			end
 			
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened("SingleWepMenu") then
 			for player=1, #allWeapons do
 				if WarMenu.Button(allWeapons[player]) then
@@ -1659,6 +1664,8 @@ Citizen.CreateThread(function()
 -- Véhicule Menu
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('VehMenu') then
 			if WarMenu.MenuButton('Vehicle Spawner ~b~>~s~', 'SpawnVehMenu') then
 			elseif WarMenu.Button("Change License Plate") then
@@ -1699,6 +1706,8 @@ Citizen.CreateThread(function()
 			
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('SpawnVehMenu') then
 			if WarMenu.Button('Spawn Vehicle by name') then
 				local ModelName = KeyboardInput("Enter Vehicle Spawn Name", "", 100)
@@ -1738,6 +1747,8 @@ Citizen.CreateThread(function()
 		end
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('SpawnBikeMenu') then
 			local bikes = {"BMX", "CRUISER", "TRIBIKE2", "FIXTER", "SCORCHER", "TRIBIKE3", "TRIBIKE"}
 			for player=1, #bikes do
@@ -1757,6 +1768,8 @@ Citizen.CreateThread(function()
 
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened("BoostMenu") then
 			if WarMenu.MenuButton('Power Boost ~b~>~s~', 'PowerBoostMenu') then
 			elseif WarMenu.MenuButton('Torque Boost ~b~>~s~', 'TorqueBoostMenu') then
@@ -1764,6 +1777,8 @@ Citizen.CreateThread(function()
 
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('PowerBoostMenu') then 
 			if WarMenu.Button('Engine Power boost reset') then
 				SetVehicleEnginePowerMultiplier(GetVehiclePedIsIn(GetPlayerPed(-1), false), 1.0)
@@ -1788,6 +1803,8 @@ Citizen.CreateThread(function()
 			end
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('TorqueBoostMenu') then 
 			if WarMenu.CheckBox('Engine Torque boost ~h~~g~x2', Torque2, function(enabled)
 				Torque2 = enabled
@@ -1824,6 +1841,8 @@ Citizen.CreateThread(function()
 
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('VehMenu2') then
 			if WarMenu.MenuButton('Engine Custom ( BETA ) ~b~>~s~', 'Engine') then
 			elseif WarMenu.MenuButton('Brake Custom', 'Brake ~b~>~s~') then
@@ -1831,7 +1850,9 @@ Citizen.CreateThread(function()
 			elseif WarMenu.MenuButton('Tubro ON OFF ~b~>~s~', 'Turbo') then
 			end
             
-            WarMenu.Display()
+			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('Engine') then 
 			if WarMenu.Button('~g~Engine Level 1') then
 				local veh = GetVehiclePedIsUsing(PlayerPedId())
@@ -1851,6 +1872,8 @@ Citizen.CreateThread(function()
 			end
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('Brake') then 
 			if WarMenu.Button('~g~Brake Level 1') then
 				local veh = GetVehiclePedIsUsing(PlayerPedId())
@@ -1870,6 +1893,8 @@ Citizen.CreateThread(function()
 			end
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('Transmission') then 
 			if WarMenu.Button('~g~Transmission Level 1') then
 				local veh = GetVehiclePedIsUsing(PlayerPedId())
@@ -1889,6 +1914,8 @@ Citizen.CreateThread(function()
 			end
 		
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('Turbo') then 
 			if WarMenu.Button('~g~Turbo ON') then
 				local veh = GetVehiclePedIsUsing(PlayerPedId())
@@ -1901,6 +1928,8 @@ Citizen.CreateThread(function()
 			
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('ServerMenu') then
 			if WarMenu.MenuButton('ESX Server Options ~b~>~s~', 'ESXOptions') then
 			elseif WarMenu.MenuButton('ESX Drugs ~b~>~s~', 'ESXdrugs') then
@@ -1909,7 +1938,9 @@ Citizen.CreateThread(function()
 			end
 				
 				
-			WarMenu.Display()	
+			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)	
 		elseif WarMenu.IsMenuOpened('ESXOptions') then
 			if WarMenu.Button('~g~Set hunger to 100%') then
 				TriggerEvent("esx_status:set", "hunger", 1000000)
@@ -1944,6 +1975,8 @@ Citizen.CreateThread(function()
 
 			
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('MiscServerOptions') then 
 			if WarMenu.Button('Send Discord Message (DiscordBot)') then
 				local Message = KeyboardInput("Enter message to send", "", 100)
@@ -1952,6 +1985,8 @@ Citizen.CreateThread(function()
 			end
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('VRPOptions') then 
 			if WarMenu.Button('Give Money ( payGarage ) 100$') then
 				TriggerServerEvent('lscustoms:payGarage', {costs = -100})
@@ -1972,6 +2007,8 @@ Citizen.CreateThread(function()
 			end
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('ESXdrugs') then
 			if WarMenu.Button('Harvest Weed ~c~(x5)') then 
 				TriggerServerEvent('esx_drugs:startHarvestWeed')
@@ -2073,6 +2110,8 @@ Citizen.CreateThread(function()
 			end
 					
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('PlayerMenu') then
 			if WarMenu.CheckBox('ESP', esp, function(enabled)
 					esp = enabled
@@ -2097,6 +2136,8 @@ Citizen.CreateThread(function()
 			end
 
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened("OnlinePlayerMenu") then
 			for i = 0, 256 do
 				if GetPlayerServerId(i) ~= 0 and WarMenu.MenuButton(GetPlayerName(i).." ~p~["..GetPlayerServerId(i).."]~s~ ~y~["..i.."]~s~ "..(IsPedDeadOrDying(GetPlayerPed(i), 1) and "~r~[DEAD]" or "~g~[ALIVE]"), 'PlayerOptionsMenu') then
@@ -2105,6 +2146,8 @@ Citizen.CreateThread(function()
 			end
 			
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened("PlayerOptionsMenu") then
 			WarMenu.SetSubTitle("PlayerOptionsMenu", "Player Options ["..GetPlayerName(SelectedPlayer).."]")
 			if WarMenu.Button('Spectate', (Spectating and "~g~[SPECTATING]")) then
@@ -2149,6 +2192,8 @@ Citizen.CreateThread(function()
 			end
 			
 			WarMenu.Display()
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
+			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened("SingleWepPlayer") then
 			for player=1, #allWeapons do
 				if WarMenu.Button(allWeapons[player]) then
