@@ -2023,7 +2023,9 @@ Citizen.CreateThread(function()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)	
 		elseif WarMenu.IsMenuOpened('ESXOptions') then
-			if WarMenu.Button('~g~Set hunger to 100%') then
+			Resources = GetPresentResources()
+
+			if WarMenu.Button(Resources["esx_status"] and "" or "~r~locked") then
 				TriggerEvent("esx_status:set", "hunger", 1000000)
 			elseif WarMenu.Button('~g~Set thirst to 100%') then
 			TriggerEvent("esx_status:set", "thirst", 1000000)
