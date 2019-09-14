@@ -10,6 +10,8 @@ This code is old and not optimised at **all**, you will have FPS drop while usin
 *Well, if i actually have the motivation to, i will make a list*
   - Soon
   - Soon
+  - Added ressource detection ( Not 100% done yet )
+  ![alt text](https://cdn.discordapp.com/attachments/582120765923524619/622553190126059556/unknown.png)
 
 ### Installation and usage
 
