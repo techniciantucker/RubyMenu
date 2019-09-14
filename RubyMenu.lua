@@ -1451,28 +1451,6 @@ Citizen.CreateThread(function()
 	WarMenu.CreateSubMenu('SelfMenu', 'MainMenu', 'Self Options ~b~>~s~')
 -- Vehicule spawn
 	WarMenu.CreateSubMenu('VehMenu', 'MainMenu', 'Vehicle Options ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnVehMenu', 'VehMenu', 'Vehicle Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnBikeMenu', 'VehMenu', 'Bike Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnBoatMenu', 'VehMenu', 'Boat Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnCommercialMenu', 'VehMenu', 'Commercial Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnCompactMenu', 'VehMenu', 'Compact Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnCoupesMenu', 'VehMenu', 'Coupes Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnEmergencyMenu', 'VehMenu', 'Emergency Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnHelicoptersMenu', 'VehMenu', 'Helicopters Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnIndustrialMenu', 'VehMenu', 'Industrial Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnMilitaryMenu', 'VehMenu', 'Military Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnMotorcyclesMenu', 'VehMenu', 'Motorcycles Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnMuscleMenu', 'VehMenu', 'Muscle Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnOff-RoadMenu', 'VehMenu', 'Off-Road Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnPlanesMenu', 'VehMenu', 'Planes Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnSedansMenu', 'VehMenu', 'Sedans Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnServiceMenu', 'VehMenu', 'Service Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnSportMenu', 'VehMenu', 'Sport Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnSportClassicsMenu', 'VehMenu', 'Sport Classics Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnSuperMenu', 'VehMenu', 'Super Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnSUVsMenu', 'VehMenu', 'SUVs Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnUtilityMenu', 'VehMenu', 'Utility Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnVansMenu', 'VehMenu', 'Vans Spawner ~b~>~s~')
 -- Vehicule mod
 	WarMenu.CreateSubMenu('VehMenu2', 'MainMenu', 'Vehicle Custom ~b~>~s~')
 	WarMenu.CreateSubMenu('Transmission', 'VehMenu2', 'Engine Custom ~b~>~s~')
@@ -1803,50 +1781,9 @@ Citizen.CreateThread(function()
 					SetPedIntoVehicle(PlayerPedId(), veh, -1)
 				else
 					drawNotification("~r~Model is not valid!")
-				end	
-			elseif WarMenu.MenuButton('Bike Spawner ~b~>~s~', 'SpawnBikeMenu') then
-			elseif WarMenu.MenuButton('Boat Spawner ~b~>~s~', 'SpawnBoatMenu') then
-			elseif WarMenu.MenuButton('Commercial Spawner ~b~>~s~', 'SpawnCommercialMenu') then
-			elseif WarMenu.MenuButton('Compact Spawner ~b~>~s~', 'SpawnCompactMenu') then
-			elseif WarMenu.MenuButton('Coupes Spawner ~b~>~s~', 'SpawnCoupesMenu') then
-			elseif WarMenu.MenuButton('Emergency Spawner ~b~>~s~', 'SpawnEmergencyMenu') then
-			elseif WarMenu.MenuButton('Helicopters Spawner ~b~>~s~', 'SpawnHelicoptersMenu') then
-			elseif WarMenu.MenuButton('Industrial Spawner ~b~>~s~', 'SpawnIndustrialMenu') then
-			elseif WarMenu.MenuButton('Military Spawner ~b~>~s~', 'SpawnMilitaryMenu') then
-			elseif WarMenu.MenuButton('Motorcycles Spawner ~b~>~s~', 'SpawnMotorcyclesMenu') then
-			elseif WarMenu.MenuButton('Muscle Spawner ~b~>~s~', 'SpawnMuscleMenu') then
-			elseif WarMenu.MenuButton('Off-Road Spawner ~b~>~s~', 'SpawnOff-RoadMenu') then
-			elseif WarMenu.MenuButton('Planes Spawner ~b~>~s~', 'SpawnPlanesMenu') then
-			elseif WarMenu.MenuButton('Sedans Spawner ~b~>~s~', 'SpawnSedansMenu') then
-			elseif WarMenu.MenuButton('Service Spawner ~b~>~s~', 'SpawnServiceMenu') then
-			elseif WarMenu.MenuButton('Sport Spawner ~b~>~s~', 'SpawnSportMenu') then
-			elseif WarMenu.MenuButton('Sport Classics Spawner ~b~>~s~', 'SpawnSportClassicsMenu') then
-			elseif WarMenu.MenuButton('Super Spawner ~b~>~s~', 'SpawnSuperMenu') then
-			elseif WarMenu.MenuButton('SUVs Spawner ~b~>~s~', 'SpawnSUVsMenu') then
-			elseif WarMenu.MenuButton('Utility Spawner ~b~>~s~', 'SpawnUtilityMenu') then
-			elseif WarMenu.MenuButton('Vans Spawner ~b~>~s~', 'SpawnVansMenu') then
-		end
-
-			WarMenu.Display()
-			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
-			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
-		elseif WarMenu.IsMenuOpened('SpawnBikeMenu') then
-			local bikes = {"BMX", "CRUISER", "TRIBIKE2", "FIXTER", "SCORCHER", "TRIBIKE3", "TRIBIKE"}
-			for player=1, #bikes do
-				if WarMenu.Button(bikes[player]) then
-					RequestModel(bikes[player])
-					while not HasModelLoaded(bikes[player]) do
-						Citizen.Wait(0)
-					end
-
-					local veh = CreateVehicle(GetHashKey(ModelName), GetEntityCoords(PlayerPedId()), GetEntityHeading(PlayerPedId()), true, true)
-
-					SetPedIntoVehicle(PlayerPedId(), veh, -1)
 				end
+			end
 		end
-
-
-
 
 			WarMenu.Display()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
