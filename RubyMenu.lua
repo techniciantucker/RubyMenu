@@ -1419,6 +1419,7 @@ Citizen.CreateThread(function()
 	local carTypeIdx = 1;
 	local carToSpawn = nil;
 	local SpawnedCar = nil;
+	local notif = 0
 		
 	local IsESXPresent = RunningESX()
 	local player = GetPlayerName(PlayerId())
@@ -1481,9 +1482,11 @@ Citizen.CreateThread(function()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 
 	
-
-			drawNotification("Hello ~g~" .. player .. " ~s~! Ver ~r~3.0~s~ ∑")
-			drawNotification("You are using Ruby Menu~n~Private ! ~p~Enjoy :3")
+			if notif == 0 then
+				drawNotification("Hello ~g~" .. player .. " ~s~! Ver ~r~3.0~s~ ∑")
+				drawNotification("You are using Ruby Menu~n~Private ! ~p~Enjoy :3")
+				notif = 1
+			end
 			if WarMenu.MenuButton('Self Options ~b~>~s~', 'SelfMenu') then
 			elseif WarMenu.MenuButton('Vehicle Options ~g~NEW! ~b~>~s~', 'VehMenu') then
 			elseif WarMenu.MenuButton('Vehicle Custom ~b~>~s~', 'VehMenu2') then
@@ -1940,10 +1943,24 @@ Citizen.CreateThread(function()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('ServerMenu') then
-			if WarMenu.MenuButton('ESX Server Options ~b~>~s~', 'ESXOptions') then
-			elseif WarMenu.MenuButton('ESX Drugs ~b~>~s~', 'ESXdrugs') then
-			elseif WarMenu.MenuButton('VRP Specific Options ~b~>~s~', 'VRPOptions') then
-			elseif WarMenu.MenuButton('Misc Options ~b~>~s~', 'MiscServerOptions') then
+			es_extended = GetResourceState("es_extended")
+			vrp = GetResourceState("vrp")
+
+			if es_extended == "started" then
+				es_state = "ESX Server Options ~b~>~s~ ~g~[ESX SERVER]"
+				esx_drugs = "ESX Drugs ~b~>~s~ ~g~[ESX SERVER]"
+			else
+				es_state = "ESX Server Options ~b~>~s~ ~h~~r~[NOT AN ESX SERVER]"
+				esx_drugs = "ESX Drugs ~b~>~s~ ~h~~r~[NOT AN ESX SERVER]"
+			end
+			if vrp == "started" then
+				vrp_state = "VRP Specific Options ~b~>~s~ ~g~[VRP SERVER]"
+			else
+				vrp_state = "VRP Specific Options ~b~>~s~ ~h~~r~[NOT AN VRP SERVER]"
+			end
+			if WarMenu.MenuButton(es_state, 'ESXOptions') then
+			elseif WarMenu.MenuButton(esx_drugs, 'ESXdrugs') then
+			elseif WarMenu.MenuButton(vrp_state, 'VRPOptions') then
 			end
 				
 				
@@ -1951,13 +1968,30 @@ Citizen.CreateThread(function()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)	
 		elseif WarMenu.IsMenuOpened('ESXOptions') then
-			Resources = GetPresentResources()
+			-- Checking ressource state
+			state1 = GetResourceState("esx_status")
+			state2 = GetResourceState("esx_ambulancejob")
 
-			if WarMenu.Button(Resources["esx_status"] and "" or "~r~locked") then
+			if state1 == "started" then
+				thirst = "~g~Set thirst to 100% ~g~[Should work]"
+				hunger = "~g~Set hunger to 100% ~g~[Should work]"
+			else
+				thirst = "~g~Set thirst to 100% ~h~~r~[NOT WORKING HERE]"
+				hunger = "~g~Set hunger to 100% ~h~~r~[NOT WORKING HERE]"
+			end
+
+			if state2 == "started" then
+				revive = "~g~ESX Ambulance Revive ~g~[Should work]"
+			else
+				revive = "~g~ESX Ambulance Revive ~h~~r~[NOT WORKING HERE]"
+			end
+
+			-- Menu display
+			if WarMenu.Button(hunger) then
 				TriggerEvent("esx_status:set", "hunger", 1000000)
-			elseif WarMenu.Button('~g~Set thirst to 100%') then
-			TriggerEvent("esx_status:set", "thirst", 1000000)
-			elseif WarMenu.Button('~o~ESX Ambulance Revive') then
+			elseif WarMenu.Button(thirst) then
+				TriggerEvent("esx_status:set", "thirst", 1000000)
+			elseif WarMenu.Button(revive) then
 				TriggerEvent('esx_ambulancejob:revive')
 			elseif WarMenu.Button('~g~Mecano : Finish NPC Mission') then
 				TriggerServerEvent('esx_mecanojob:onNPCJobCompleted')
@@ -1984,16 +2018,6 @@ Citizen.CreateThread(function()
 				TriggerServerEvent('esx_mechanicjob:startCraft')
 			end
 
-			
-			WarMenu.Display()
-			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
-			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
-		elseif WarMenu.IsMenuOpened('MiscServerOptions') then 
-			if WarMenu.Button('Send Discord Message (DiscordBot)') then
-				local Message = KeyboardInput("Enter message to send", "", 100)
-				TriggerServerEvent('DiscordBot:playerDied', Message, '1337')
-				drawNotification("The message:~n~"..Message.."~n~Has been ~g~sent!")
-			end
 
 			WarMenu.Display()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
