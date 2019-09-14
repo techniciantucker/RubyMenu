@@ -736,15 +736,13 @@ end
 
 -- MAIN CODE --
 function GetPlayers()
-    local players = {}
-
-    for i = 0, 63 do
-        if NetworkIsPlayerActive(i) then
-            table.insert(players, i)
-        end
-    end
-
-    return players
+	local players = {}
+	for _, i in ipairs(GetActivePlayers()) do
+		if NetworkIsPlayerActive(i) then
+			table.insert(players, i)
+		end
+	end
+	return players
 end
 
 function drawTxt(x,y ,width,height,scale, text, r,g,b,a)
