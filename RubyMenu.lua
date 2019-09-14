@@ -1,3 +1,11 @@
+-- War Menu Source code --
+
+
+
+
+
+
+
 WarMenu = { }
 
 WarMenu.debug = false
@@ -520,6 +528,21 @@ function WarMenu.SetMenuButtonPressedSound(id, name, set)
 end
 
 
+--
+--
+--
+--
+--
+-- Ruby Menu Functions
+--
+--
+--
+--
+--
+--
+
+
+
 function KeyboardInput(TextEntry, ExampleText, MaxStringLength)
 
 	AddTextEntry('FMMC_KEY_TIP1', TextEntry .. ':')
@@ -590,7 +613,7 @@ function drawNotification(text)
 	DrawNotification(false, false)
 end
 
-local allWeapons = {"WEAPON_KNIFE","WEAPON_KNUCKLE","WEAPON_NIGHTSTICK","WEAPON_HAMMER","WEAPON_BAT","WEAPON_GOLFCLUB","WEAPON_CROWBAR","WEAPON_BOTTLE","WEAPON_DAGGER","WEAPON_HATCHET","WEAPON_MACHETE","WEAPON_FLASHLIGHT","WEAPON_SWITCHBLADE","WEAPON_PISTOL","WEAPON_PISTOL_MK2","WEAPON_COMBATPISTOL","WEAPON_APPISTOL","WEAPON_PISTOL50","WEAPON_SNSPISTOL","WEAPON_HEAVYPISTOL","WEAPON_VINTAGEPISTOL","WEAPON_STUNGUN","WEAPON_FLAREGUN","WEAPON_MARKSMANPISTOL","WEAPON_REVOLVER","WEAPON_MICROSMG","WEAPON_SMG","WEAPON_SMG_MK2","WEAPON_ASSAULTSMG","WEAPON_MG","WEAPON_COMBATMG","WEAPON_COMBATMG_MK2","WEAPON_COMBATPDW","WEAPON_GUSENBERG","WEAPON_MACHINEPISTOL","WEAPON_ASSAULTRIFLE","WEAPON_ASSAULTRIFLE_MK2","WEAPON_CARBINERIFLE","WEAPON_CARBINERIFLE_MK2","WEAPON_ADVANCEDRIFLE","WEAPON_SPECIALCARBINE","WEAPON_BULLPUPRIFLE","WEAPON_COMPACTRIFLE","WEAPON_PUMPSHOTGUN","WEAPON_SAWNOFFSHOTGUN","WEAPON_BULLPUPSHOTGUN","WEAPON_ASSAULTSHOTGUN","WEAPON_MUSKET","WEAPON_HEAVYSHOTGUN","WEAPON_DBSHOTGUN","WEAPON_SNIPERRIFLE","WEAPON_HEAVYSNIPER","WEAPON_HEAVYSNIPER_MK2","WEAPON_MARKSMANRIFLE","WEAPON_GRENADELAUNCHER","WEAPON_GRENADELAUNCHER_SMOKE","WEAPON_RPG","WEAPON_STINGER","WEAPON_FIREWORK","WEAPON_HOMINGLAUNCHER","WEAPON_GRENADE","WEAPON_STICKYBOMB","WEAPON_PROXMINE","WEAPON_BZGAS","WEAPON_SMOKEGRENADE","WEAPON_MOLOTOV","WEAPON_FIREEXTINGUISHER","WEAPON_PETROLCAN","WEAPON_SNOWBALL","WEAPON_FLARE","WEAPON_BALL"}
+local allWeapons = {"WEAPON_KNIFE","WEAPON_KNUCKLE","WEAPON_NIGHTSTICK","WEAPON_HAMMER","WEAPON_BAT","WEAPON_GOLFCLUB","WEAPON_CROWBAR","WEAPON_BOTTLE","WEAPON_DAGGER","WEAPON_HATCHET","WEAPON_MACHETE","WEAPON_FLASHLIGHT","WEAPON_SWITCHBLADE","WEAPON_BATTLEAXE","WEAPON_WRENCH","WEAPON_POOLCUE","WEAPON_STONE_HATCHET","WEAPON_PISTOL","WEAPON_PISTOL_MK2","WEAPON_COMBATPISTOL","WEAPON_APPISTOL","WEAPON_PISTOL50","WEAPON_SNSPISTOL","WEAPON_HEAVYPISTOL","WEAPON_VINTAGEPISTOL","WEAPON_STUNGUN","WEAPON_FLAREGUN","WEAPON_RAYPISTOL","WEAPON_MARKSMANPISTOL","WEAPON_REVOLVER","WEAPON_DOUBLEACTION","WEAPON_MICROSMG","WEAPON_MINISMG","WEAPON_SMG","WEAPON_SMG_MK2","WEAPON_ASSAULTSMG","WEAPON_MG","WEAPON_COMBATMG","WEAPON_COMBATMG_MK2","WEAPON_COMBATPDW","WEAPON_GUSENBERG","WEAPON_MACHINEPISTOL","WEAPON_RAYCARBINE","WEAPON_ASSAULTRIFLE","WEAPON_ASSAULTRIFLE_MK2","WEAPON_CARBINERIFLE","WEAPON_CARBINERIFLE_MK2","WEAPON_ADVANCEDRIFLE","WEAPON_SPECIALCARBINE","WEAPON_BULLPUPRIFLE","WEAPON_COMPACTRIFLE","WEAPON_PUMPSHOTGUN","WEAPON_SAWNOFFSHOTGUN","WEAPON_BULLPUPSHOTGUN","WEAPON_ASSAULTSHOTGUN","WEAPON_MUSKET","WEAPON_HEAVYSHOTGUN","WEAPON_DBSHOTGUN","WEAPON_AUTOSHOTGUN","WEAPON_SNIPERRIFLE","WEAPON_HEAVYSNIPER","WEAPON_HEAVYSNIPER_MK2","WEAPON_MARKSMANRIFLE","WEAPON_GRENADELAUNCHER","WEAPON_GRENADELAUNCHER_SMOKE","WEAPON_COMPACTLAUNCHER","WEAPON_RPG","WEAPON_STINGER","WEAPON_FIREWORK","WEAPON_HOMINGLAUNCHER","WEAPON_RAILGUN","WEAPON_MINIGUN","WEAPON_RAYMINIGUN","WEAPON_GRENADE","WEAPON_STICKYBOMB","WEAPON_PROXMINE","WEAPON_BZGAS","WEAPON_SMOKEGRENADE","WEAPON_MOLOTOV","WEAPON_PIPEBOMB","WEAPON_FIREEXTINGUISHER","WEAPON_PETROLCAN","WEAPON_SNOWBALL","WEAPON_FLARE","WEAPON_BALL","GADGET_PARACHUTE"}
 
 
 local Enabled = true
@@ -716,7 +739,6 @@ function GetInputMode()
 end
 
 
--- MAIN CODE --
 function GetPlayers()
 	local players = {}
 	for _, i in ipairs(GetActivePlayers()) do
@@ -758,6 +780,23 @@ function drawTxt2(x,y ,width,height,scale, text, r,g,b,a)
 		DrawText(x - width/2, y - height/2 + 0.005)
 	end
 end
+
+--
+--
+--
+--
+--
+--
+--
+--          Menu Thread
+--
+--
+--
+--
+--
+--
+--
+--
 
 Citizen.CreateThread(function()
 	local currentPlayer = PlayerId()
@@ -1289,7 +1328,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		else
-			for id = 0, 256 do
+			for _, id in ipairs(GetActivePlayers()) do
 				ped = GetPlayerPed(id)
 				blip = GetBlipFromEntity(ped)
 				if DoesBlipExist(blip) then
@@ -1348,7 +1387,7 @@ end
 
 function Initialize(scaleform)
 
-	anticheatm = "~w~RUBY ~r~2.9"
+	anticheatm = "~w~RUBY ~r~3.0"
     local scaleform = RequestScaleformMovie(scaleform)
     while not HasScaleformMovieLoaded(scaleform) do
         Citizen.Wait(1)
@@ -1358,6 +1397,16 @@ function Initialize(scaleform)
     PopScaleformMovieFunctionVoid()
     return scaleform
 end
+
+--
+--
+--
+--
+--                    Main Menu Thread
+--
+--
+--
+--
 
 
 Citizen.CreateThread(function()
@@ -1374,7 +1423,7 @@ Citizen.CreateThread(function()
 	local IsESXPresent = RunningESX()
 	local player = GetPlayerName(PlayerId())
 
-	WarMenu.CreateMenu('MainMenu', '~w~RUBY ~h~~r~2.9')
+	WarMenu.CreateMenu('MainMenu', '~w~RUBY ~h~~r~3.0')
 	WarMenu.SetSubTitle('MainMenu', 'Welcome to ruby '..player..'.')
 	WarMenu.CreateSubMenu('SelfMenu', 'MainMenu', 'Self Options ~b~>~s~')
 -- Vehicule spawn
@@ -1433,10 +1482,10 @@ Citizen.CreateThread(function()
 
 	
 
-			drawNotification("Hello ~g~" .. player .. " ~s~! Ver ~r~2.9~s~ ∑")
+			drawNotification("Hello ~g~" .. player .. " ~s~! Ver ~r~3.0~s~ ∑")
 			drawNotification("You are using Ruby Menu~n~Private ! ~p~Enjoy :3")
 			if WarMenu.MenuButton('Self Options ~b~>~s~', 'SelfMenu') then
-            elseif WarMenu.MenuButton('Vehicle Options ~b~>~s~', 'VehMenu') then
+			elseif WarMenu.MenuButton('Vehicle Options ~g~NEW! ~b~>~s~', 'VehMenu') then
 			elseif WarMenu.MenuButton('Vehicle Custom ~b~>~s~', 'VehMenu2') then
 			elseif WarMenu.MenuButton('Vehicle Boost ~b~>~s~', 'BoostMenu') then
 			elseif WarMenu.MenuButton('Player Options ~b~>~s~', 'PlayerMenu') then
@@ -1655,6 +1704,20 @@ Citizen.CreateThread(function()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('VehMenu') then
 			if WarMenu.MenuButton('Vehicle Spawner ~b~>~s~', 'SpawnVehMenu') then
+			elseif WarMenu.Button("~g~NEW! - ~w~Mark vehicle as personal") then
+				local ped = GetPlayerPed(-1)
+				local car = IsPedInAnyVehicle(ped, false)
+				local PlayerCar = GetVehiclePedIsIn(ped, false)
+				if car then
+					local blip = AddBlipForEntity(PlayerCar)
+					SetBlipSprite(blip, 326)
+					SetBlipColour(blip, 26)
+					SetBlipScale(blip, 0.85)
+					SetBlipPriority(blip, 50)
+					ShowTickOnBlip(blip, true)
+				else
+					drawNotification("~r~You have to be in a vehicle")
+				end
 			elseif WarMenu.Button("Change License Plate") then
 				local playerPed = GetPlayerPed(-1)
 				local playerVeh = GetVehiclePedIsIn(playerPed, true)
@@ -1711,7 +1774,7 @@ Citizen.CreateThread(function()
 					drawNotification("~r~Model is not valid!")
 				end
 			end
-		end
+		
 
 			WarMenu.Display()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
