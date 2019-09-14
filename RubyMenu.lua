@@ -33,32 +33,6 @@ local buttonScale = 0.365
 local buttonTextXOffset = 0.005
 local buttonTextYOffset = 0.002
 
-local boats = {"Dinghy", "Dinghy2", "Dinghy3", "Dingh4", "Jetmax", "Marquis", "Seashark", "Seashark2", "Seashark3", "Speeder", "Speeder2", "Squalo", "Submersible", "Submersible2", "Suntrap", "Toro", "Toro2", "Tropic", "Tropic2", "Tug"}
-local Commercial = {"Benson", "Biff", "Cerberus", "Cerberus2", "Cerberus3", "Hauler", "Hauler2", "Mule", "Mule2", "Mule3", "Mule4", "Packer", "Phantom", "Phantom2", "Phantom3", "Pounder", "Pounder2", "Stockade", "Stockade3", "Terbyte"}
-local Compacts = {"Blista", "Blista2", "Blista3", "Brioso", "Dilettante", "Dilettante2", "Issi2", "Issi3", "issi4", "Iss5", "issi6", "Panto", "Prarire", "Rhapsody"}
-local Coupes = { "CogCabrio", "Exemplar", "F620", "Felon", "Felon2", "Jackal", "Oracle", "Oracle2", "Sentinel", "Sentinel2", "Windsor", "Windsor2", "Zion", "Zion2"}
-local cycles = { "Bmx", "Cruiser", "Fixter", "Scorcher", "Tribike", "Tribike2", "tribike3" }
-local Emergency = { "Ambulance", "FBI", "FBI2", "FireTruk", "PBus", "Police", "Police2", "Police3", "Police4", "PoliceOld1", "PoliceOld2", "PoliceT", "Policeb", "Polmav", "Pranger", "Predator", "Riot", "Riot2", "Sheriff", "Sheriff2"}
-local Helicopters = { "Akula", "Annihilator", "Buzzard", "Buzzard2", "Cargobob", "Cargobob2", "Cargobob3", "Cargobob4", "Frogger", "Frogger2", "Havok", "Hunter", "Maverick", "Savage", "Seasparrow", "Skylift", "Supervolito", "Supervolito2", "Swift", "Swift2", "Valkyrie", "Valkyrie2", "Volatus"}
-local Industrial = { "Bulldozer", "Cutter", "Dump", "Flatbed", "Guardian", "Handler", "Mixer", "Mixer2", "Rubble", "Tiptruck", "Tiptruck2"}
-local Military = { "APC", "Barracks", "Barracks2", "Barracks3", "Barrage", "Chernobog", "Crusader", "Halftrack", "Khanjali", "Rhino", "Scarab", "Scarab2", "Scarab3", "Thruster", "Trailersmall2"}
-local Motorcycles = { "Akuma", "Avarus", "Bagger", "Bati2", "Bati", "BF400", "Blazer4", "CarbonRS", "Chimera", "Cliffhanger", "Daemon", "Daemon2", "Defiler", "Deathbike", "Deathbike2", "Deathbike3", "Diablous", "Diablous2", "Double", "Enduro", "esskey", "Faggio2", "Faggio3", "Faggio", "Fcr2", "fcr", "gargoyle", "hakuchou2", "hakuchou", "hexer", "innovation", "Lectro", "Manchez", "Nemesis", "Nightblade", "Oppressor", "Oppressor2", "PCJ", "Ratbike", "Ruffian", "Sanchez2", "Sanchez", "Sanctus", "Shotaro", "Sovereign", "Thrust", "Vader", "Vindicator", "Vortex", "Wolfsbane", "zombiea", "zombieb"}
-local muscle = { "Blade", "Buccaneer", "Buccaneer2", "Chino", "Chino2", "clique", "Deviant", "Dominator", "Dominator2", "Dominator3", "Dominator4", "Dominator5", "Dominator6", "Dukes", "Dukes2", "Ellie", "Faction", "faction2", "faction3", "Gauntlet", "Gauntlet2", "Hermes", "Hotknife", "Hustler", "Impaler", "Impaler2", "Impaler3", "Impaler4", "Imperator", "Imperator2", "Imperator3", "Lurcher", "Moonbeam", "Moonbeam2", "Nightshade", "Phoenix", "Picador", "RatLoader", "RatLoader2", "Ruiner", "Ruiner2", "Ruiner3", "SabreGT", "SabreGT2", "Sadler2", "Slamvan", "Slamvan2", "Slamvan3", "Slamvan4", "Slamvan5", "Slamvan6", "Stalion", "Stalion2", "Tampa", "Tampa3", "Tulip", "Vamos,", "Vigero", "Virgo", "Virgo2", "Virgo3", "Voodoo", "Voodoo2", "Yosemite"}
-local OffRoad = {"BFinjection", "Bifta", "Blazer", "Blazer2", "Blazer3", "Blazer5", "Bohdi", "Brawler", "Bruiser", "Bruiser2", "Bruiser3", "Caracara", "DLoader", "Dune", "Dune2", "Dune3", "Dune4", "Dune5", "Insurgent", "Insurgent2", "Insurgent3", "Kalahari", "Kamacho", "LGuard", "Marshall", "Mesa", "Mesa2", "Mesa3", "Monster", "Monster4", "Monster5", "Nightshark", "RancherXL", "RancherXL2", "Rebel", "Rebel2", "RCBandito", "Riata", "Sandking", "Sandking2", "Technical", "Technical2", "Technical3", "TrophyTruck", "TrophyTruck2", "Freecrawler", "Menacer"}
-local Planes = {"AlphaZ1", "Avenger", "Avenger2", "Besra", "Blimp", "blimp2", "Blimp3", "Bombushka", "Cargoplane", "Cuban800", "Dodo", "Duster", "Howard", "Hydra", "Jet", "Lazer", "Luxor", "Luxor2", "Mammatus", "Microlight", "Miljet", "Mogul", "Molotok", "Nimbus", "Nokota", "Pyro", "Rogue", "Seabreeze", "Shamal", "Starling", "Stunt", "Titan", "Tula", "Velum", "Velum2", "Vestra", "Volatol", "Striekforce"}
-local SUVs = {"BJXL", "Baller", "Baller2", "Baller3", "Baller4", "Baller5", "Baller6", "Cavalcade", "Cavalcade2", "Dubsta", "Dubsta2", "Dubsta3", "FQ2", "Granger", "Gresley", "Habanero", "Huntley", "Landstalker", "patriot", "Patriot2", "Radi", "Rocoto", "Seminole", "Serrano", "Toros", "XLS", "XLS2"}
-local Sedans = {"Asea", "Asea2", "Asterope", "Cog55", "Cogg552", "Cognoscenti", "Cognoscenti2", "emperor", "emperor2", "emperor3", "Fugitive", "Glendale", "ingot", "intruder", "limo2", "premier", "primo", "primo2", "regina", "romero", "stafford", "Stanier", "stratum", "stretch", "surge", "tailgater", "warrener", "Washington"}
-local Service = { "Airbus", "Brickade", "Bus", "Coach", "Rallytruck", "Rentalbus", "Taxi", "Tourbus", "Trash", "Trash2", "WastIndr", "PBus2"}
-local Sports = {"Alpha", "Banshee", "Banshee2", "BestiaGTS", "Buffalo", "Buffalo2", "Buffalo3", "Carbonizzare", "Comet2", "Comet3", "Comet4", "Comet5", "Coquette", "Deveste", "Elegy", "Elegy2", "Feltzer2", "Feltzer3", "FlashGT", "Furoregt", "Fusilade", "Futo", "GB200", "Hotring", "Infernus2", "Italigto", "Jester", "Jester2", "Khamelion", "Kurama", "Kurama2", "Lynx", "MAssacro", "MAssacro2", "neon", "Ninef", "ninfe2", "omnis", "Pariah", "Penumbra", "Raiden", "RapidGT", "RapidGT2", "Raptor", "Revolter", "Ruston", "Schafter2", "Schafter3", "Schafter4", "Schafter5", "Schafter6", "Schlagen", "Schwarzer", "Sentinel3", "Seven70", "Specter", "Specter2", "Streiter", "Sultan", "Surano", "Tampa2", "Tropos", "Verlierer2", "ZR380", "ZR3802", "ZR3803"}
-local SportsClassic = {"Ardent", "BType", "BType2", "BType3", "Casco", "Cheetah2", "Cheburek", "Coquette2", "Coquette3", "Deluxo", "Fagaloa", "Gt500", "JB700", "JEster3", "MAmba", "Manana", "Michelli", "Monroe", "Peyote", "Pigalle", "RapidGT3", "Retinue", "Savastra", "Stinger", "Stingergt", "Stromberg", "Swinger", "Torero", "Tornado", "Tornado2", "Tornado3", "Tornado4", "Tornado5", "Tornado6", "Viseris", "Z190", "ZType"}
-local Super = {"adder", "Autarch", "Bullet", "Cheetah", "Cyclone", "EntityXF", "Entity2", "FMJ", "GP1", "Infernus", "LE7B", "Nero", "Nero2", "Osiris", "Penetrator", "PFister811", "Prototipo", "Reaper", "SC1", "Scramjet", "Sheava", "SultanRS", "Superd", "T20", "Taipan", "Tempesta", "Tezeract", "Turismo2", "Turismor", "Tyrant", "Tyrus", "Vacca", "Vagner", "Vigilante", "Visione", "Voltic", "Voltic2", "Zentorno", "Italigtb", "Italigtb2", "XA21"}
-local Trailer = { "ArmyTanker", "ArmyTrailer", "ArmyTrailer2", "BaleTrailer", "BoatTrailer", "CableCar", "DockTrailer", "Graintrailer", "Proptrailer", "Raketailer", "TR2", "TR3", "TR4", "TRFlat", "TVTrailer", "Tanker", "Tanker2", "Trailerlogs", "Trailersmall", "Trailers", "Trailers2", "Trailers3"}
-local trains = {"Freight", "Freightcar", "Freightcont1", "Freightcont2", "Freightgrain", "Freighttrailer", "TankerCar"}
-local Utility = {"Airtug", "Caddy", "Caddy2", "Caddy3", "Docktug", "Forklift", "Mower", "Ripley", "Sadler", "Scrap", "TowTruck", "Towtruck2", "Tractor", "Tractor2", "Tractor3", "TrailerLArge2", "Utilitruck", "Utilitruck3", "'Utilitruck2"}
-local Vans = {"Bison", "Bison2", "Bison3", "BobcatXL", "Boxville", "Boxville2", "Boxville3", "Boxville4", "Boxville5", "Burrito", "Burrito2", "Burrito3", "Burrito4", "Burrito5", "Camper", "GBurrito", "GBurrito2", "Journey", "minivan", "Minivan2", "Paradise", "pony", "Pony2", "Rumpo", "Rumpo2", "Rumpo3", "Speedo", "Speedo2", "Speedo4", "Surfer", "Surfer2", "Taco", "Youga", "youga2"}
-local CarTypes = {"Griefer's Choice", "Boats", "Commercial", "Compacts", "Coupes", "Cycles", "Emergency", "Helictopers", "Industrial", "Military", "Motorcycles", "Muscle", "Off-Road", "Planes", "SUVs", "Sedans", "Service", "Sports", "Sports Classic", "Super", "Trailer", "Trains", "Utility", "Vans"}
-local CarsArray = { boats, Commercial, Compacts, Coupes, cycles, Emergency, Helicopters, Industrial, Military, Motorcycles, muscle, OffRoad, Planes, SUVs, Sedans, Service, Sports, SportsClassic, Super, Trailer, trains, Utility, Vans}
-
 
 local function debugPrint(text)
 	if WarMenu.debug then
@@ -737,40 +711,20 @@ function Clean2(veh)
 	SetVehicleDirtLevel(veh, 1.0)
 end
 
-function RequestControl(entity)
-	local Waiting = 0
-	NetworkRequestControlOfEntity(entity)
-	while not NetworkHasControlOfEntity(entity) do
-		Waiting = Waiting + 100
-		Citizen.Wait(100)
-		if Waiting > 5000 then
-			drawNotification('Hung for 5 seconds, killing to prevent issues...')
-		end
-	end
-end
-
 function GetInputMode()
 	return Citizen.InvokeNative(0xA571D46727E2B718, 2) and "MouseAndKeyboard" or "GamePad"
-end
-
-function DrawSpecialText(m_text, showtime)
-	SetTextEntry_2("STRING")
-	AddTextComponentString(m_text)
-	DrawSubtitleTimed(showtime, 1)
 end
 
 
 -- MAIN CODE --
 function GetPlayers()
-    local players = {}
-
-    for i = 0, 63 do
-        if NetworkIsPlayerActive(i) then
-            table.insert(players, i)
-        end
-    end
-
-    return players
+	local players = {}
+	for _, i in ipairs(GetActivePlayers()) do
+		if NetworkIsPlayerActive(i) then
+			table.insert(players, i)
+		end
+	end
+	return players
 end
 
 function drawTxt(x,y ,width,height,scale, text, r,g,b,a)
@@ -816,7 +770,7 @@ Citizen.CreateThread(function()
 		SetPlayerInvincible(PlayerId(), Godmode)
 		SetEntityInvincible(PlayerPedId(), Godmode)
 		if esp then
-			for player = 0, 256 do
+			for _, player in ipairs(GetActivePlayers()) do
 				if player ~= currentPlayer and NetworkIsPlayerActive(player) then
 					local playerPed = GetPlayerPed(player)
 					local playerName = GetPlayerName(player)
@@ -1196,7 +1150,7 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1000)
 		if blips1 then
-			for id = 0, 256 do
+			for _, id in ipairs(GetActivePlayers()) do
 				if NetworkIsPlayerActive(id) and GetPlayerPed(id) ~= GetPlayerPed(-1) then
 					ped = GetPlayerPed(id)
 					blip = GetBlipFromEntity(ped)
@@ -1354,7 +1308,7 @@ Citizen.CreateThread(function()
 		Wait(1000)
 		local players = GetPlayers()
 		if blips2 then
-			for player = 0, 256 do
+			for _, player in ipairs(GetActivePlayers()) do
 				if player ~= currentPlayer and NetworkIsPlayerActive(player) then
 					local playerPed = GetPlayerPed(player)
 					local playerName = GetPlayerName(player)
@@ -1405,32 +1359,6 @@ function Initialize(scaleform)
     return scaleform
 end
 
-function Draw2Text3D(x,y,z, text)
-    local onScreen,_x,_y = World3dToScreen2d(x,y,z)
-    local px,py,pz = table.unpack(GetGameplayCamCoord())
-    local dist = GetDistanceBetweenCoords(px,py,pz, x,y,z, 1)
- 
-    local scale = (1/dist)*2
-    local fov = (1/GetGameplayCamFov())*100
-    local scale = scale*fov
-
-    if onScreen then
-        SetTextScale(0.0*scale, 0.55*scale)
-        SetTextFont(font)
-        SetTextProportional(1)
-        SetTextColour(color.r, color.g, color.b, color.alpha)
-        SetTextDropshadow(0, 0, 0, 0, 255)
-        SetTextEdge(2, 0, 0, 0, 150)
-        --SetTextDropShadow()
-        --SetTextOutline()
-        SetTextEntry("STRING")
-        SetTextCentre(true)
-        AddTextComponentString(text)
-        EndTextCommandDisplayText(_x, _y)
-    end
-end
-
-
 
 Citizen.CreateThread(function()
 	FreezeEntityPosition(entity, false)
@@ -1451,28 +1379,6 @@ Citizen.CreateThread(function()
 	WarMenu.CreateSubMenu('SelfMenu', 'MainMenu', 'Self Options ~b~>~s~')
 -- Vehicule spawn
 	WarMenu.CreateSubMenu('VehMenu', 'MainMenu', 'Vehicle Options ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnVehMenu', 'VehMenu', 'Vehicle Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnBikeMenu', 'VehMenu', 'Bike Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnBoatMenu', 'VehMenu', 'Boat Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnCommercialMenu', 'VehMenu', 'Commercial Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnCompactMenu', 'VehMenu', 'Compact Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnCoupesMenu', 'VehMenu', 'Coupes Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnEmergencyMenu', 'VehMenu', 'Emergency Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnHelicoptersMenu', 'VehMenu', 'Helicopters Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnIndustrialMenu', 'VehMenu', 'Industrial Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnMilitaryMenu', 'VehMenu', 'Military Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnMotorcyclesMenu', 'VehMenu', 'Motorcycles Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnMuscleMenu', 'VehMenu', 'Muscle Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnOff-RoadMenu', 'VehMenu', 'Off-Road Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnPlanesMenu', 'VehMenu', 'Planes Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnSedansMenu', 'VehMenu', 'Sedans Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnServiceMenu', 'VehMenu', 'Service Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnSportMenu', 'VehMenu', 'Sport Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnSportClassicsMenu', 'VehMenu', 'Sport Classics Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnSuperMenu', 'VehMenu', 'Super Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnSUVsMenu', 'VehMenu', 'SUVs Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnUtilityMenu', 'VehMenu', 'Utility Spawner ~b~>~s~')
-	WarMenu.CreateSubMenu('SpawnVansMenu', 'VehMenu', 'Vans Spawner ~b~>~s~')
 -- Vehicule mod
 	WarMenu.CreateSubMenu('VehMenu2', 'MainMenu', 'Vehicle Custom ~b~>~s~')
 	WarMenu.CreateSubMenu('Transmission', 'VehMenu2', 'Engine Custom ~b~>~s~')
@@ -1803,50 +1709,9 @@ Citizen.CreateThread(function()
 					SetPedIntoVehicle(PlayerPedId(), veh, -1)
 				else
 					drawNotification("~r~Model is not valid!")
-				end	
-			elseif WarMenu.MenuButton('Bike Spawner ~b~>~s~', 'SpawnBikeMenu') then
-			elseif WarMenu.MenuButton('Boat Spawner ~b~>~s~', 'SpawnBoatMenu') then
-			elseif WarMenu.MenuButton('Commercial Spawner ~b~>~s~', 'SpawnCommercialMenu') then
-			elseif WarMenu.MenuButton('Compact Spawner ~b~>~s~', 'SpawnCompactMenu') then
-			elseif WarMenu.MenuButton('Coupes Spawner ~b~>~s~', 'SpawnCoupesMenu') then
-			elseif WarMenu.MenuButton('Emergency Spawner ~b~>~s~', 'SpawnEmergencyMenu') then
-			elseif WarMenu.MenuButton('Helicopters Spawner ~b~>~s~', 'SpawnHelicoptersMenu') then
-			elseif WarMenu.MenuButton('Industrial Spawner ~b~>~s~', 'SpawnIndustrialMenu') then
-			elseif WarMenu.MenuButton('Military Spawner ~b~>~s~', 'SpawnMilitaryMenu') then
-			elseif WarMenu.MenuButton('Motorcycles Spawner ~b~>~s~', 'SpawnMotorcyclesMenu') then
-			elseif WarMenu.MenuButton('Muscle Spawner ~b~>~s~', 'SpawnMuscleMenu') then
-			elseif WarMenu.MenuButton('Off-Road Spawner ~b~>~s~', 'SpawnOff-RoadMenu') then
-			elseif WarMenu.MenuButton('Planes Spawner ~b~>~s~', 'SpawnPlanesMenu') then
-			elseif WarMenu.MenuButton('Sedans Spawner ~b~>~s~', 'SpawnSedansMenu') then
-			elseif WarMenu.MenuButton('Service Spawner ~b~>~s~', 'SpawnServiceMenu') then
-			elseif WarMenu.MenuButton('Sport Spawner ~b~>~s~', 'SpawnSportMenu') then
-			elseif WarMenu.MenuButton('Sport Classics Spawner ~b~>~s~', 'SpawnSportClassicsMenu') then
-			elseif WarMenu.MenuButton('Super Spawner ~b~>~s~', 'SpawnSuperMenu') then
-			elseif WarMenu.MenuButton('SUVs Spawner ~b~>~s~', 'SpawnSUVsMenu') then
-			elseif WarMenu.MenuButton('Utility Spawner ~b~>~s~', 'SpawnUtilityMenu') then
-			elseif WarMenu.MenuButton('Vans Spawner ~b~>~s~', 'SpawnVansMenu') then
-		end
-
-			WarMenu.Display()
-			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
-			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
-		elseif WarMenu.IsMenuOpened('SpawnBikeMenu') then
-			local bikes = {"BMX", "CRUISER", "TRIBIKE2", "FIXTER", "SCORCHER", "TRIBIKE3", "TRIBIKE"}
-			for player=1, #bikes do
-				if WarMenu.Button(bikes[player]) then
-					RequestModel(bikes[player])
-					while not HasModelLoaded(bikes[player]) do
-						Citizen.Wait(0)
-					end
-
-					local veh = CreateVehicle(GetHashKey(ModelName), GetEntityCoords(PlayerPedId()), GetEntityHeading(PlayerPedId()), true, true)
-
-					SetPedIntoVehicle(PlayerPedId(), veh, -1)
 				end
+			end
 		end
-
-
-
 
 			WarMenu.Display()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
@@ -2222,7 +2087,7 @@ Citizen.CreateThread(function()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened("OnlinePlayerMenu") then
-			for i = 0, 256 do
+			for _, i in ipairs(GetActivePlayers()) do
 				if GetPlayerServerId(i) ~= 0 and WarMenu.MenuButton(GetPlayerName(i).." ~p~["..GetPlayerServerId(i).."]~s~ ~y~["..i.."]~s~ "..(IsPedDeadOrDying(GetPlayerPed(i), 1) and "~r~[DEAD]" or "~g~[ALIVE]"), 'PlayerOptionsMenu') then
 					SelectedPlayer = i
 				end
