@@ -816,7 +816,7 @@ Citizen.CreateThread(function()
 		SetPlayerInvincible(PlayerId(), Godmode)
 		SetEntityInvincible(PlayerPedId(), Godmode)
 		if esp then
-			for player = 0, 256 do
+			for _, player in ipairs(GetActivePlayers()) do
 				if player ~= currentPlayer and NetworkIsPlayerActive(player) then
 					local playerPed = GetPlayerPed(player)
 					local playerName = GetPlayerName(player)
@@ -1354,7 +1354,7 @@ Citizen.CreateThread(function()
 		Wait(1000)
 		local players = GetPlayers()
 		if blips2 then
-			for player = 0, 256 do
+			for _, player in ipairs(GetActivePlayers()) do
 				if player ~= currentPlayer and NetworkIsPlayerActive(player) then
 					local playerPed = GetPlayerPed(player)
 					local playerName = GetPlayerName(player)
