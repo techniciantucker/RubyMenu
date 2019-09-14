@@ -1,5 +1,6 @@
 # Ruby Menu
 
+[![HitCount](http://hits.dwyl.io/Rubylium/RubyMenu.svg)](http://hits.dwyl.io/Rubylium/RubyMenu)
 
 Ruby Menu was made few month ago while i was into cheating, it got used as source code for many other popular menu like Lynx, tiago menu and others that i don't even know.
 Now that i see lot of people using my code to sell things, i'm making this source code public so everyone can use it for free. I will probably add things to it soon, remember it's only a LUA menu, it's not an cheating menu until you found a way to use it as an cheating menu.
