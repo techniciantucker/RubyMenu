@@ -1944,16 +1944,23 @@ Citizen.CreateThread(function()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened('ServerMenu') then
 			es_extended = GetResourceState("es_extended")
+			vrp = GetResourceState("vrp")
 
 			if es_extended == "started" then
 				es_state = "ESX Server Options ~b~>~s~ ~g~[ESX SERVER]"
+				esx_drugs = "ESX Drugs ~b~>~s~ ~g~[ESX SERVER]"
 			else
 				es_state = "ESX Server Options ~b~>~s~ ~h~~r~[NOT AN ESX SERVER]"
+				esx_drugs = "ESX Drugs ~b~>~s~ ~h~~r~[NOT AN ESX SERVER]"
+			end
+			if vrp == "started" then
+				vrp_state = "VRP Specific Options ~b~>~s~ ~g~[VRP SERVER]"
+			else
+				vrp_state = "VRP Specific Options ~b~>~s~ ~h~~r~[NOT AN VRP SERVER]"
 			end
 			if WarMenu.MenuButton(es_state, 'ESXOptions') then
-			elseif WarMenu.MenuButton('ESX Drugs ~b~>~s~', 'ESXdrugs') then
-			elseif WarMenu.MenuButton('VRP Specific Options ~b~>~s~', 'VRPOptions') then
-			elseif WarMenu.MenuButton('Misc Options ~b~>~s~', 'MiscServerOptions') then
+			elseif WarMenu.MenuButton(esx_drugs, 'ESXdrugs') then
+			elseif WarMenu.MenuButton(vrp_state, 'VRPOptions') then
 			end
 				
 				
@@ -2011,16 +2018,6 @@ Citizen.CreateThread(function()
 				TriggerServerEvent('esx_mechanicjob:startCraft')
 			end
 
-			
-			WarMenu.Display()
-			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
-			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
-		elseif WarMenu.IsMenuOpened('MiscServerOptions') then 
-			if WarMenu.Button('Send Discord Message (DiscordBot)') then
-				local Message = KeyboardInput("Enter message to send", "", 100)
-				TriggerServerEvent('DiscordBot:playerDied', Message, '1337')
-				drawNotification("The message:~n~"..Message.."~n~Has been ~g~sent!")
-			end
 
 			WarMenu.Display()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
