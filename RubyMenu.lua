@@ -1,3 +1,11 @@
+-- War Menu Source code --
+
+
+
+
+
+
+
 WarMenu = { }
 
 WarMenu.debug = false
@@ -520,6 +528,21 @@ function WarMenu.SetMenuButtonPressedSound(id, name, set)
 end
 
 
+--
+--
+--
+--
+--
+-- Ruby Menu Functions
+--
+--
+--
+--
+--
+--
+
+
+
 function KeyboardInput(TextEntry, ExampleText, MaxStringLength)
 
 	AddTextEntry('FMMC_KEY_TIP1', TextEntry .. ':')
@@ -716,7 +739,6 @@ function GetInputMode()
 end
 
 
--- MAIN CODE --
 function GetPlayers()
 	local players = {}
 	for _, i in ipairs(GetActivePlayers()) do
@@ -758,6 +780,23 @@ function drawTxt2(x,y ,width,height,scale, text, r,g,b,a)
 		DrawText(x - width/2, y - height/2 + 0.005)
 	end
 end
+
+--
+--
+--
+--
+--
+--
+--
+--          Menu Thread
+--
+--
+--
+--
+--
+--
+--
+--
 
 Citizen.CreateThread(function()
 	local currentPlayer = PlayerId()
@@ -1289,7 +1328,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		else
-			for id = 0, 256 do
+			for _, id in ipairs(GetActivePlayers()) do
 				ped = GetPlayerPed(id)
 				blip = GetBlipFromEntity(ped)
 				if DoesBlipExist(blip) then
@@ -1358,6 +1397,16 @@ function Initialize(scaleform)
     PopScaleformMovieFunctionVoid()
     return scaleform
 end
+
+--
+--
+--
+--
+--                    Main Menu Thread
+--
+--
+--
+--
 
 
 Citizen.CreateThread(function()
@@ -1436,7 +1485,7 @@ Citizen.CreateThread(function()
 			drawNotification("Hello ~g~" .. player .. " ~s~! Ver ~r~2.9~s~ ∑")
 			drawNotification("You are using Ruby Menu~n~Private ! ~p~Enjoy :3")
 			if WarMenu.MenuButton('Self Options ~b~>~s~', 'SelfMenu') then
-            elseif WarMenu.MenuButton('Vehicle Options ~b~>~s~', 'VehMenu') then
+			elseif WarMenu.MenuButton('Vehicle Options ~b~>~s~', 'VehMenu') then
 			elseif WarMenu.MenuButton('Vehicle Custom ~b~>~s~', 'VehMenu2') then
 			elseif WarMenu.MenuButton('Vehicle Boost ~b~>~s~', 'BoostMenu') then
 			elseif WarMenu.MenuButton('Player Options ~b~>~s~', 'PlayerMenu') then
