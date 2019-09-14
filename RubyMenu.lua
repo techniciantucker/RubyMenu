@@ -711,26 +711,8 @@ function Clean2(veh)
 	SetVehicleDirtLevel(veh, 1.0)
 end
 
-function RequestControl(entity)
-	local Waiting = 0
-	NetworkRequestControlOfEntity(entity)
-	while not NetworkHasControlOfEntity(entity) do
-		Waiting = Waiting + 100
-		Citizen.Wait(100)
-		if Waiting > 5000 then
-			drawNotification('Hung for 5 seconds, killing to prevent issues...')
-		end
-	end
-end
-
 function GetInputMode()
 	return Citizen.InvokeNative(0xA571D46727E2B718, 2) and "MouseAndKeyboard" or "GamePad"
-end
-
-function DrawSpecialText(m_text, showtime)
-	SetTextEntry_2("STRING")
-	AddTextComponentString(m_text)
-	DrawSubtitleTimed(showtime, 1)
 end
 
 
@@ -1168,7 +1150,7 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1000)
 		if blips1 then
-			for id = 0, 256 do
+			for _, id in ipairs(GetActivePlayers()) do
 				if NetworkIsPlayerActive(id) and GetPlayerPed(id) ~= GetPlayerPed(-1) then
 					ped = GetPlayerPed(id)
 					blip = GetBlipFromEntity(ped)
@@ -1376,32 +1358,6 @@ function Initialize(scaleform)
     PopScaleformMovieFunctionVoid()
     return scaleform
 end
-
-function Draw2Text3D(x,y,z, text)
-    local onScreen,_x,_y = World3dToScreen2d(x,y,z)
-    local px,py,pz = table.unpack(GetGameplayCamCoord())
-    local dist = GetDistanceBetweenCoords(px,py,pz, x,y,z, 1)
- 
-    local scale = (1/dist)*2
-    local fov = (1/GetGameplayCamFov())*100
-    local scale = scale*fov
-
-    if onScreen then
-        SetTextScale(0.0*scale, 0.55*scale)
-        SetTextFont(font)
-        SetTextProportional(1)
-        SetTextColour(color.r, color.g, color.b, color.alpha)
-        SetTextDropshadow(0, 0, 0, 0, 255)
-        SetTextEdge(2, 0, 0, 0, 150)
-        --SetTextDropShadow()
-        --SetTextOutline()
-        SetTextEntry("STRING")
-        SetTextCentre(true)
-        AddTextComponentString(text)
-        EndTextCommandDisplayText(_x, _y)
-    end
-end
-
 
 
 Citizen.CreateThread(function()
@@ -2131,7 +2087,7 @@ Citizen.CreateThread(function()
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 			DrawScaleformMovie(scaleform, 1.183, 0.6247, 0.9, 0.9, 255, 255, 255, 255, 0)
 		elseif WarMenu.IsMenuOpened("OnlinePlayerMenu") then
-			for i = 0, 256 do
+			for _, i in ipairs(GetActivePlayers()) do
 				if GetPlayerServerId(i) ~= 0 and WarMenu.MenuButton(GetPlayerName(i).." ~p~["..GetPlayerServerId(i).."]~s~ ~y~["..i.."]~s~ "..(IsPedDeadOrDying(GetPlayerPed(i), 1) and "~r~[DEAD]" or "~g~[ALIVE]"), 'PlayerOptionsMenu') then
 					SelectedPlayer = i
 				end
