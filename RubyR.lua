@@ -3147,7 +3147,7 @@ function UIMenu.New(Title, Subtitle, X, Y, TxtDictionary, TxtName,mouse,R,G,B,A)
             OnMenuChanged = function(_, _, _) end,
             OnMenuClosed = function(_)
                 put = false
-                print("ss")
+                --print("ss")
             end,
             Settings = {
                 InstructionalButtons = true,
@@ -4982,14 +4982,74 @@ end function UIProgressBarPool:Add(TimerBar)
         table.insert(self.ProgressBar, TimerBar)
         return #self.ProgressBar
     end
-end function UIProgressBarPool:Draw()
-    for _, ProgressBar in pairs(self.ProgressBar) do
-        ProgressBar:Draw()
+end function UIProgressBarPool:Draw() for _, ProgressBar in pairs(self.ProgressBar) do ProgressBar:Draw()end end function NativeUI.TimerBarPool()return UITimerBarPool.New()end function NativeUI.ProgressBarPool()return UIProgressBarPool.New()end function NativeUI.CreateProgressBarItem(Text, X, Y, Heading, R, G, B, A)return UIProgressBarItem.New(Text, X, Y, Heading, R, G, B, A)end
+
+
+
+-- The actual menu
+
+
+
+
+_menuPool = NativeUI.CreatePool()
+MainMenu = NativeUI.CreateMenu("~r~Ruby ~w~Reloaded", "~b~Open source menu.", 0, 100, "shopui_title_sm_hangar", "shopui_title_sm_hangar")
+_menuPool:Add(MainMenu)
+--_menuPool:WidthOffset(0)
+
+
+local blipList = {}
+local blipStatus = false
+function RubyR(menu)
+    local test = NativeUI.CreateItem("Test", "Test")
+    menu:AddItem(test)
+
+    local submenu = _menuPool:AddSubMenu(menu, "All player options ~b~>")
+    
+    local blip = NativeUI.CreateCheckboxItem("Player Blips", blipStatus, "~b~Allow you to see anybody on the minimap", 1)
+    submenu:AddItem(blip)
+
+    submenu.OnCheckboxChange = function(sender, item, checked_)
+        if item == blip then
+           CheckStatus = checked_
+            if CheckStatus then
+                for _, i in ipairs(GetActivePlayers()) do
+                    local blip = AddBlipForEntity(i)
+                    SetBlipSprite(blip, 1)
+                    SetBlipShrink(blip, 1)
+                    SetBlipScale(blip, 0.85)
+                    table.insert(blipList, blip)
+                end
+            else
+                for _, i in ipairs(blipList) do
+                    if DoesBlipExist(i) then
+                        RemoveBlip(i)
+                    end
+                end
+            end
+        end
     end
-end function NativeUI.TimerBarPool()
-    return UITimerBarPool.New()
-end function NativeUI.ProgressBarPool()
-    return UIProgressBarPool.New()
-end function NativeUI.CreateProgressBarItem(Text, X, Y, Heading, R, G, B, A)
-    return UIProgressBarItem.New(Text, X, Y, Heading, R, G, B, A)
+end
+
+
+
+
+
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(0)
+        _menuPool:ProcessMenus()
+        if IsControlJustReleased(0, 73) then
+            OpenRubyR()
+        end
+    end
+end)
+
+
+_menuPool:RefreshIndex()
+
+function OpenRubyR()
+    MainMenu:Clear()
+    RubyR(MainMenu)
+    MainMenu:Visible(not MainMenu:Visible())
 end
